@@ -59,6 +59,7 @@ public class Main {
     }
 
     private static void randomizalo() {
+        
 
         HashSet<Integer> szamok = new HashSet<Integer>();
         while ( szamok.size() < 10) {
