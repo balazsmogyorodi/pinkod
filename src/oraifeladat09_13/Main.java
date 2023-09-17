@@ -1,10 +1,12 @@
 package oraifeladat09_13;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
+
     static Scanner src = new Scanner(System.in);
     static Random rnd = new Random();
 
@@ -22,7 +24,19 @@ public class Main {
             probalkozas--;
         }
         uzenet(sikeres);
-        randomizalo();
+        int szamTomb [] = randomizalo(0, 9);
+        int sor = 1;
+        for (int i = 0; i < szamTomb.length; i++) {
+            System.out.print(szamTomb[i]);
+            if(sor % 3 == 0) {
+                System.out.println("");
+                sor = 1;
+            } else{
+                 sor ++;
+            }
+           
+        }
+
     }
 
     private static void uzenet(boolean sikeres) {
@@ -44,7 +58,7 @@ public class Main {
     }
 
     private static String pinKodBekeres(int probalkozas) {
-        System.out.print("Kód megadása (probálkozási lehetőség:"+ probalkozas  +"): ");
+        System.out.print("Kód megadása (probálkozási lehetőség:" + probalkozas + "): ");
         String kod = src.nextLine();
         System.out.println("");
         return kod;
@@ -58,21 +72,21 @@ public class Main {
         }
     }
 
-    private static void randomizalo() {
-        
+    private static int[] randomizalo(int start, int end) {
+        Random rand = new Random();
+        ArrayList<Integer> szamok = new ArrayList<Integer>();
+        int szamTomb[] = new int[end - start + 1];
+        for (int i = 0; i < 10; i++) {
+            szamok.add(i);
+        }
+        int szamtomb[] = new int[szamok.size()];
+        int alap = start;
+        for (int i = 0; i < (end - start + 1); i++) {
+            int index = rand.nextInt(0, szamok.size());
+            int valaszottSzam = szamok.get(index);
+            szamTomb[i] = valaszottSzam;
+        }
+        return szamTomb;
 
-        HashSet<Integer> szamok = new HashSet<Integer>();
-        while ( szamok.size() < 10) {
-            szamok.add(rnd.nextInt(10));
-        }
-        int sor = 0;
-        for (int szam : szamok) {
-            System.out.println(szam);
-        /*    if ((sor + 1) % 3 == 0) {
-                System.out.println("");
-                sor ++;
-            }*/
-        }
-        
-        }
+    }
 }
