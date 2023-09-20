@@ -15,6 +15,12 @@ public class Main {
     }
 
     private static void teljesProgram() {
+        
+        new Terminal();
+       
+
+        System.out.println("OOP utáni rész\n\n");
+
         String alapKod = pinKodMegadas();
         boolean sikeres = false;
         int probalkozas = 3;
@@ -24,17 +30,17 @@ public class Main {
             probalkozas--;
         }
         uzenet(sikeres);
-        int szamTomb [] = randomizalo(0, 9);
+        int szamTomb[] = randomizalo(0, 9);
         int sor = 1;
         for (int i = 0; i < szamTomb.length; i++) {
             System.out.print(szamTomb[i]);
-            if(sor % 3 == 0) {
+            if (sor % 3 == 0) {
                 System.out.println("");
                 sor = 1;
-            } else{
-                 sor ++;
+            } else {
+                sor++;
             }
-           
+
         }
 
     }
